@@ -1,11 +1,11 @@
-(function (angular, document) {
+(function () {
     'use strict';
 
     angular.module('spNgModule')
         .factory('$spBaseService', SPBaseService);
 
-    SPBaseService.$inject = ['$q', '$http', '$spNgModuleConfig'];
-    function SPBaseService($q, $http, $spNgModuleConfig) {
+    SPBaseService.$inject = ['$q', '$http', '$spNgModuleConfig', '$document'];
+    function SPBaseService($q, $http, $spNgModuleConfig, $document) {
 
         var baseUrl = $spNgModuleConfig.isAppWeb ? _spPageContextInfo.webAbsoluteUrl : _spPageContextInfo.siteAbsoluteUrl;
 
@@ -45,7 +45,8 @@
                 method: 'POST',
                 headers: {
                     'accept': 'application/json;odata=verbose',
-                    'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
+                    'X-RequestDigest': $document[0].getElementById('__REQUESTDIGEST').value,
+                    //'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
                     'content-Type': 'application/json;odata=verbose'
                 },
                 data: JSON.stringify(data)
@@ -66,8 +67,9 @@
                 url: endPoint || baseUrl + url,
                 method: 'PATCH',
                 headers: {
-                    'accept': 'application/json;odata=verbose',
-                    'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
+                    'accept': 'application/json;odata=verbose',										
+                    'X-RequestDigest': $document[0].getElementById('__REQUESTDIGEST').value,
+                    //'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
                     'content-Type': 'application/json;odata=verbose',
                     'X-Http-Method': 'PATCH',
                     'If-Match': '*'
@@ -91,7 +93,8 @@
                 method: 'DELETE',
                 headers: {
                     'accept': 'application/json;odata=verbose',
-                    'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
+                    'X-RequestDigest': $document[0].getElementById('__REQUESTDIGEST').value,
+                    //'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
                     'IF-MATCH': '*'
                 }
             }).then(function (response) {
@@ -115,7 +118,8 @@
                 transformRequest: angular.identity,
                 headers: {
                     'accept': 'application/json;odata=verbose',
-                    'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
+                    'X-RequestDigest': $document[0].getElementById('__REQUESTDIGEST').value,
+                    //'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
                     'Content-Type': undefined
                 }
             }).then(function (response) {
@@ -129,4 +133,4 @@
             return deferred.promise;
         }
     }
-})(window, angular, document);
+})();

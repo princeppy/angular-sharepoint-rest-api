@@ -1,4 +1,5 @@
-(function (angular) {
+
+(function () {
     'use strict';
 
     angular.module('spNgModule')
@@ -29,4 +30,4 @@
             }
         };
     }
-})(window, angular);
+})();
