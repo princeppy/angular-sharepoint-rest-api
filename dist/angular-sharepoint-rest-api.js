@@ -1,6 +1,14 @@
 (function () {
     'use strict';
 
+    angular.module('spNgModule', [])
+        .value('$spNgModuleConfig', {
+            'isAppWeb': false
+        });
+})(window);
+(function () {
+    'use strict';
+
     angular.module('spNgModule')
         .directive("customFileChange", CustomFileChange)
 

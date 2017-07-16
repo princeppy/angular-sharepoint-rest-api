@@ -25,13 +25,15 @@ gulp.task('default', ['help']);
  * @return {Stream}
  */
 gulp.task('js', function () {
-    return gulp.src([config.src + 'js/**/*.js'])
+    return gulp.src([config.src + 'module.js', config.src + 'js/**/*.js'])
         .pipe($.filter('**/*.js'))
         .pipe($.order([
+            'module.js',
             '*.app.js',
             '*.module.js',
-            '*.*'
+            '*'
         ]))
+        .pipe($.using({}))
         //.pipe($.uglify())
         .pipe($.concat('angular-sharepoint-rest-api.js'))
         .pipe(gulp.dest(config.dest));
