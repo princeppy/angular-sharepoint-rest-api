@@ -37,4 +37,22 @@ gulp.task('js', function () {
         .pipe(gulp.dest(config.dest));
 });
 
+gulp.task('bump-patch', function(){
+    gulp.src('./*.json')
+        .pipe($.bump({type:'patch'}))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('bump-minor', function(){
+    gulp.src('./*.json')
+        .pipe($.bump({type:'minor'}))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('bump-major', function(){
+    gulp.src('./*.json')
+        .pipe($.bump({type:'major'}))
+        .pipe(gulp.dest('./'));
+});
+
 gulp.task('build', ['js']);
