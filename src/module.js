@@ -5,4 +5,4 @@
         value('$spNgModuleConfig', {
             'isAppWeb': false
         });
-})();
+})(window);

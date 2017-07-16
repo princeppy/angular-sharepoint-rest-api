@@ -130,4 +130,4 @@
             return deferred.promise;
         }
     } 
-})();
+})(window, document);
