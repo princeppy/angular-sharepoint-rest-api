@@ -1,6 +1,6 @@
 {
   "name": "angular-sharepoint-rest-api",
-  "version": "1.0.35.0",
+  "version": "1.0.36.0",
   "description": "SharePoint REST API and AngularJs for 2013, 2016 and Online",
   "main": "  angular-sharepoint-rest-api.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "gulp-autoprefixer": "^4.0.0",
     "gulp-bower": "0.0.13",
     "gulp-bump": "^2.7.0",
-    "gulp-clean-css": "^3.6.0",
+    "gulp-clean-css": "^3.7.0",
     "gulp-concat": "^2.6.1",
     "gulp-filter": "^5.0.0",
     "gulp-header": "^1.8.8",

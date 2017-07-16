@@ -36,6 +36,9 @@ gulp.task('js', function () {
         .pipe($.using({}))
         //.pipe($.uglify())
         .pipe($.concat('angular-sharepoint-rest-api.js'))
+        .pipe(gulp.dest(config.dest))
+        .pipe($.rename('angular-sharepoint-rest-api.min.js'))
+        .pipe($.uglify())
         .pipe(gulp.dest(config.dest));
 });
 

@@ -1,8 +1,8 @@
-(function () {
+(function (angular) {
     'use strict';
 
-    angular.module('spNgModule', [])
+    angular.module('spNgModule', ['ng'])
         .value('$spNgModuleConfig', {
             'isAppWeb': false
         });
-})(window);
+})(window, angular);

@@ -1,11 +1,10 @@
-(function () {
+(function (angular, document) {
     'use strict';
 
     angular.module('spNgModule')
-        .factory("$spBaseService", SPBaseService);
+        .factory('$spBaseService', SPBaseService);
 
-    SPBaseService.$inject = ["$q", "$http", "$spNgModuleConfig"];
-
+    SPBaseService.$inject = ['$q', '$http', '$spNgModuleConfig'];
     function SPBaseService($q, $http, $spNgModuleConfig) {
 
         var baseUrl = $spNgModuleConfig.isAppWeb ? _spPageContextInfo.webAbsoluteUrl : _spPageContextInfo.siteAbsoluteUrl;
@@ -23,17 +22,17 @@
             var deferred = $q.defer();
             $http({
                 url: endPoint || baseUrl + query,
-                method: "GET",
+                method: 'GET',
                 headers: {
-                    "accept": "application/json;odata=verbose",
-                    "content-Type": "application/json;odata=verbose"
+                    'accept': 'application/json;odata=verbose',
+                    'content-Type': 'application/json;odata=verbose'
                 }
-            }).success(function (result) {
-                deferred.resolve(result);
-            }).error(function (result, status) {
+            }).then(function (response) {
+                deferred.resolve(response.data.d.results);
+            }, function (response) {
                 deferred.reject({
-                    error: result,
-                    status: status
+                    error: response.statusText,
+                    status: response.status
                 });
             });
             return deferred.promise;
@@ -43,19 +42,19 @@
             var deferred = $q.defer();
             $http({
                 url: endPoint || baseUrl + url,
-                method: "POST",
+                method: 'POST',
                 headers: {
-                    "accept": "application/json;odata=verbose",
-                    "X-RequestDigest": document.getElementById("__REQUESTDIGEST").value,
-                    "content-Type": "application/json;odata=verbose"
+                    'accept': 'application/json;odata=verbose',
+                    'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
+                    'content-Type': 'application/json;odata=verbose'
                 },
                 data: JSON.stringify(data)
-            }).success(function (result) {
-                deferred.resolve(result);
-            }).error(function (result, status) {
+            }).then(function (response) {
+                deferred.resolve(response.data.d.results);
+            }, function (response) {
                 deferred.reject({
-                    error: result,
-                    status: status
+                    error: response.statusText,
+                    status: response.status
                 });
             });
             return deferred.promise;
@@ -65,21 +64,21 @@
             var deferred = $q.defer();
             $http({
                 url: endPoint || baseUrl + url,
-                method: "PATCH",
+                method: 'PATCH',
                 headers: {
-                    "accept": "application/json;odata=verbose",
-                    "X-RequestDigest": document.getElementById("__REQUESTDIGEST").value,
-                    "content-Type": "application/json;odata=verbose",
-                    "X-Http-Method": "PATCH",
-                    "If-Match": "*"
+                    'accept': 'application/json;odata=verbose',
+                    'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
+                    'content-Type': 'application/json;odata=verbose',
+                    'X-Http-Method': 'PATCH',
+                    'If-Match': '*'
                 },
                 data: JSON.stringify(data)
-            }).success(function (result) {
-                deferred.resolve(result);
-            }).error(function (result, status) {
+            }).then(function (response) {
+                deferred.resolve(response.data.d.results);
+            }, function (response) {
                 deferred.reject({
-                    error: result,
-                    status: status
+                    error: response.statusText,
+                    status: response.status
                 });
             });
             return deferred.promise;
@@ -89,18 +88,18 @@
             var deferred = $q.defer();
             $http({
                 url: endPoint || baseUrl + url,
-                method: "DELETE",
+                method: 'DELETE',
                 headers: {
-                    "accept": "application/json;odata=verbose",
-                    "X-RequestDigest": document.getElementById("__REQUESTDIGEST").value,
-                    "IF-MATCH": "*"
+                    'accept': 'application/json;odata=verbose',
+                    'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
+                    'IF-MATCH': '*'
                 }
-            }).success(function (result) {
-                deferred.resolve(result);
-            }).error(function (result, status) {
+            }).then(function (response) {
+                deferred.resolve(response.data.d.results);
+            }, function (response) {
                 deferred.reject({
-                    error: result,
-                    status: status
+                    error: response.statusText,
+                    status: response.status
                 });
             });
             return deferred.promise;
@@ -110,24 +109,24 @@
             var deferred = $q.defer();
             $http({
                 url: endPoint || baseUrl + url,
-                method: "POST",
+                method: 'POST',
                 processData: false,
                 data: data,
                 transformRequest: angular.identity,
                 headers: {
-                    "accept": "application/json;odata=verbose",
-                    "X-RequestDigest": document.getElementById("__REQUESTDIGEST").value,
-                    "Content-Type": undefined
+                    'accept': 'application/json;odata=verbose',
+                    'X-RequestDigest': document.getElementById('__REQUESTDIGEST').value,
+                    'Content-Type': undefined
                 }
-            }).success(function (result) {
-                deferred.resolve(result);
-            }).error(function (result, status) {
+            }).then(function (response) {
+                deferred.resolve(response.data.d.results);
+            }, function (response) {
                 deferred.reject({
-                    error: result,
-                    status: status
+                    error: response.statusText,
+                    status: response.status
                 });
             });
             return deferred.promise;
         }
-    } 
-})(window, document);
+    }
+})(window, angular, document);

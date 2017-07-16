@@ -1,16 +1,16 @@
-(function () {
+(function (angular) {
     'use strict';
 
     angular.module('spNgModule')
-        .directive("customFileChange", CustomFileChange)
+        .directive('customFileChange', CustomFileChange)
 
     function CustomFileChange($parse) {
         return {
-            restrict: "A",
+            restrict: 'A',
             link: function (scope, element, attrs) {
                 var model = $parse(attrs.customFileChange);
                 var modelSetter = model.assign;
-                element.bind("change", function () {
+                element.bind('change', function () {
                     scope.$apply(function () {
                         var reader = new FileReader();
                         reader.onload = function (e) {
@@ -29,4 +29,4 @@
             }
         };
     }
-})(window, document);
+})(window, angular);
