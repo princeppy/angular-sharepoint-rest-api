@@ -4,10 +4,12 @@ var args = require('yargs').argv;
 var del = require('del');
 var path = require('path');
 var $ = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'gulp.*'],
+    pattern: ['gulp-*', 'gulp.*', '!gulp-release-it'],
     replaceString: /\bgulp[\-.]/,
     lazy: true
 });
+
+require('gulp-release-it')(gulp);
 
 var config = {
     src: 'src/',
@@ -42,6 +44,7 @@ gulp.task('js', function () {
         .pipe(gulp.dest(config.dest));
 });
 
+/*
 gulp.task('bump-patch', function(){
     gulp.src('./*.json')
         .pipe($.bump({type:'patch'}))
@@ -59,5 +62,6 @@ gulp.task('bump-major', function(){
         .pipe($.bump({type:'major'}))
         .pipe(gulp.dest('./'));
 });
+*/
 
 gulp.task('build', ['js']);

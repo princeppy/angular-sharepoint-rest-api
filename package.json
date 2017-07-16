@@ -2,7 +2,7 @@
   "name": "angular-sharepoint-rest-api",
   "version": "1.0.36.0",
   "description": "SharePoint REST API and AngularJs for 2013, 2016 and Online",
-  "main": "  angular-sharepoint-rest-api.js",
+  "main": "angular-sharepoint-rest-api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +29,7 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-minify-html": "^1.0.6",
     "gulp-order": "^1.1.1",
+    "gulp-release-it": "^1.1.5",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-task-listing": "^1.0.1",
