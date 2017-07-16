@@ -1,0 +1,17 @@
+{
+  "name": "angular-sharepoint-rest-api",
+  "authors": [
+    "Prince Park <prince_ppy@yahoo.com>"
+  ],
+  "description": "SharePoint REST API and AngularJs for 2013, 2016 and Online",
+  "main": "dist/angular-sharepoint-rest-api.js",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
