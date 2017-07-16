@@ -1,17 +1,28 @@
 {
   "name": "angular-sharepoint-rest-api",
+  "version": "1.0.0.0",
   "authors": [
     "Prince Park <prince_ppy@yahoo.com>"
   ],
   "description": "SharePoint REST API and AngularJs for 2013, 2016 and Online",
   "main": "dist/angular-sharepoint-rest-api.js",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/princeppy/angular-sharepoint-rest-api",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/princeppy/angular-sharepoint-rest-api"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
+  ],
+  "keywords": [
+    "Angular",
+    "SharePoint",
+    "REST",
+    "API"
   ]
 }
