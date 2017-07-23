@@ -44,24 +44,23 @@ gulp.task('js', function () {
         .pipe(gulp.dest(config.dest));
 });
 
-/*
-gulp.task('bump-patch', function(){
+
+gulp.task('bump-local-patch', function(){
     gulp.src('./*.json')
         .pipe($.bump({type:'patch'}))
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('bump-minor', function(){
+gulp.task('bump-local-minor', function(){
     gulp.src('./*.json')
         .pipe($.bump({type:'minor'}))
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('bump-major', function(){
+gulp.task('bump-local-major', function(){
     gulp.src('./*.json')
         .pipe($.bump({type:'major'}))
         .pipe(gulp.dest('./'));
 });
-*/
 
 gulp.task('build', ['js']);
