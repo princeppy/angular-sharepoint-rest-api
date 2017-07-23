@@ -1,6 +1,6 @@
 {
   "name": "angular-sharepoint-rest-api",
-  "version": "1.1.1",
+  "version": "2.0.1",
   "description": "SharePoint REST API and AngularJs for 2013, 2016 and Online",
   "main": "angular-sharepoint-rest-api.js",
   "scripts": {
