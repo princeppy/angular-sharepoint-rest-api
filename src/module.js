@@ -1,3 +1,6 @@
+/*
+ * V2.0
+ */
 (function () {
     'use strict';
 
