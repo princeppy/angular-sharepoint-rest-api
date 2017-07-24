@@ -212,7 +212,7 @@
                 throw $spListMinErr('badargs', 'item dosen\'t exist in the list.');
             }
 
-            var data = angular.extend({}, item);
+            var data = angular.extend({}, {'Id':id});
             if (!(data.__metadata)) { data.__metadata = this.__metadata; }
             if (!(data.__metadata.type)) { data.__metadata.type = this.__metadata.type; }
 
