@@ -157,8 +157,71 @@
 
         };
 
-        listFactoryObject.prototype.removeItem = function (id) {
-            // ...
+        listFactoryObject.prototype.editItem = function (item) {
+
+            if (!(angular.isObject(item))) {
+                throw $spListMinErr('badargs', 'item must be a List instance.');
+            }
+
+            if (!item.Id) {
+                throw $spListMinErr('badargs', 'item id must be valid.');
+            }
+
+            var id = item.Id;
+            var editItemUrl = this.Url + '/Items(' + id + ')';
+            var listHeader = {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose",
+                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+                "X-HTTP-Method": "MERGE",
+                "IF-MATCH": "*"
+            };
+
+            if (!_.contains(this.Items, { 'Id': item.Id })) {
+                throw $spListMinErr('badargs', 'item dosen\'t exist in the list.');
+            }
+
+            var data = angular.extend({}, item);
+            if (!(data.__metadata)) { data.__metadata = this.__metadata; }
+            if (!(data.__metadata.type)) { data.__metadata.type = this.__metadata.type; }
+
+            return $http({
+                url: editItemUrl,
+                data: JSON.stringify(data),
+                method: "PATCH",
+                headers: listHeader
+            });
+        };
+
+        listFactoryObject.prototype.deleteItem = function (id) {
+
+            if (!id) {
+                throw $spListMinErr('badargs', 'item id must be valid.');
+            }
+
+            var deleteItemUrl = this.Url + '/Items(' + id + ')';
+            var listHeader = {
+                "Accept": "application/json;odata=verbose",
+                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+                "X-HTTP-Method": "DELETE",
+                "IF-MATCH": "*"
+            };
+
+
+            if (!_.contains(this.Items, { 'Id': id })) {
+                throw $spListMinErr('badargs', 'item dosen\'t exist in the list.');
+            }
+
+            var data = angular.extend({}, item);
+            if (!(data.__metadata)) { data.__metadata = this.__metadata; }
+            if (!(data.__metadata.type)) { data.__metadata.type = this.__metadata.type; }
+
+            return $http({
+                url: deleteItemUrl,
+                data: JSON.stringify(data),
+                method: "DELETE",
+                headers: listHeader
+            });
         };
         return listFactoryObject;
     }
