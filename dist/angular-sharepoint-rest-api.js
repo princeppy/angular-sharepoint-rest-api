@@ -467,7 +467,7 @@
             return thisList; //.get();
         }
 
-        // Public "instance" methods for models
+        // Public 'instance' methods for models
         listFactoryObject.prototype.get = function () {
 
             var listHeader = {
@@ -584,11 +584,11 @@
             var id = item.Id;
             var editItemUrl = this.Url + '/Items(' + id + ')';
             var listHeader = {
-                "Accept": "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-                "X-HTTP-Method": "MERGE",
-                "IF-MATCH": "*"
+                'Accept': 'application/json;odata=verbose',
+                'Content-Type': 'application/json;odata=verbose',
+                'X-RequestDigest': $('#__REQUESTDIGEST').val(),
+                'X-HTTP-Method': 'MERGE',
+                'IF-MATCH': '*'
             };
 
             if (!_.contains(this.Items, { 'Id': item.Id })) {
@@ -602,7 +602,7 @@
             return $http({
                 url: editItemUrl,
                 data: JSON.stringify(data),
-                method: "PATCH",
+                method: 'PATCH',
                 headers: listHeader
             });
         };
@@ -615,10 +615,10 @@
 
             var deleteItemUrl = this.Url + '/Items(' + id + ')';
             var listHeader = {
-                "Accept": "application/json;odata=verbose",
-                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-                "X-HTTP-Method": "DELETE",
-                "IF-MATCH": "*"
+                'Accept': 'application/json;odata=verbose',
+                'X-RequestDigest': $('#__REQUESTDIGEST').val(),
+                'X-HTTP-Method': 'DELETE',
+                'IF-MATCH': '*'
             };
 
 
@@ -633,7 +633,7 @@
             return $http({
                 url: deleteItemUrl,
                 data: JSON.stringify(data),
-                method: "DELETE",
+                method: 'DELETE',
                 headers: listHeader
             });
         };
