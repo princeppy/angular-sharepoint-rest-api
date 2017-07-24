@@ -8,7 +8,12 @@ var $ = require('gulp-load-plugins')({
     replaceString: /\bgulp[\-.]/,
     lazy: true
 });
-
+var ignoreFileFilter = $.filter([
+    '**',
+    '!**/~*/**',
+    '!**/~*.*',
+    '!**/~*.*.*'
+], { restore: true });
 require('gulp-release-it')(gulp);
 
 var config = {
@@ -28,6 +33,7 @@ gulp.task('default', ['help']);
  */
 gulp.task('js', function () {
     return gulp.src([config.src + 'module.js', config.src + 'js/**/*.js'])
+        .pipe(ignoreFileFilter)    
         .pipe($.filter('**/*.js'))
         .pipe($.order([
             'module.js',
