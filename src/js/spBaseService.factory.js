@@ -28,7 +28,7 @@
                     'content-Type': 'application/json;odata=verbose'
                 }
             }).then(function (response) {
-                deferred.resolve(response.data.d.results);
+                deferred.resolve(response.data.d);
             }, function (response) {
                 deferred.reject({
                     error: response.statusText,
@@ -51,7 +51,7 @@
                 },
                 data: JSON.stringify(data)
             }).then(function (response) {
-                deferred.resolve(response.data.d.results);
+                deferred.resolve(response.data.d);
             }, function (response) {
                 deferred.reject({
                     error: response.statusText,
@@ -76,7 +76,7 @@
                 },
                 data: JSON.stringify(data)
             }).then(function (response) {
-                deferred.resolve(response.data.d.results);
+                deferred.resolve(response.data.d);
             }, function (response) {
                 deferred.reject({
                     error: response.statusText,
@@ -98,7 +98,7 @@
                     'IF-MATCH': '*'
                 }
             }).then(function (response) {
-                deferred.resolve(response.data.d.results);
+                deferred.resolve(response.data.d);
             }, function (response) {
                 deferred.reject({
                     error: response.statusText,
@@ -123,7 +123,7 @@
                     'Content-Type': undefined
                 }
             }).then(function (response) {
-                deferred.resolve(response.data.d.results);
+                deferred.resolve(response.data.d);
             }, function (response) {
                 deferred.reject({
                     error: response.statusText,
