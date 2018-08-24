@@ -17,7 +17,8 @@
   angular.module('spNgModule')
     .directive('customFileChange', CustomFileChange)
 
-  function CustomFileChange($parse) {
+    CustomFileChange.$inject = ['$parse'];
+    function CustomFileChange($parse) {
     return {
       restrict: 'A',
       link: function (scope, element, attrs) {
